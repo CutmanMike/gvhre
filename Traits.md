@@ -89,3 +89,9 @@ TRAIT_ALPHA_ICON = "T_DUMM1";
 ## ACS
 
 Your traits need to also be registered via an ACS open script, but this is covered in [Classes.md](Classes.md) as you can register your class at the same time.
+
+## Next Steps
+
+Now that you've got a trait inventory item ready, it's time to decide how your class should use this trait. You can do something basic such as doing an A_JumpIfInventory to check if a player owns Trait_(TRAIT NAME HERE) to perform an alternative action, or use a TriggeredTrait to execute an ACS script that does all the work.
+
+How many traits you design is up to you. However, as noted in [Classes.md](Classes.md), if a round starts and there are no more traits avaiable to offer any existing class, no more traits will be offered for that match. You should try to strive for at least **10** traits per class, as that covers the possibility of both teams winning two rounds, thus 5 x 2 traits being offered. GVH:RE currently has 11 traits for each of the base classes for variety, but feel free to make even more if you're feeling extra creative!
