@@ -10,7 +10,7 @@ The main trait actor should be in the format of **Trait_(TRAIT NAME HERE)**. It 
 actor Trait_MyCoolTrait : BaseTrait {}
 ```
 
-And that's literally it! Your trait is ready to be given out by the system (assuming it has been registered, see Classes.md). Of course, this trait does nothing currently. What it does is up to the modder. You can use A_JumpIfInventory in weapons, CheckInventory in ACS etc. There are a few more actors you can create that the system will recognize if needed, but the top level **Trait_(TRAIT NAME HERE)** actor MUST exist.
+And that's literally it! Your trait is ready to be given out by the system (assuming it has been registered, see [Classes.md](Classes.md)). Of course, this trait does nothing currently. What it does is up to the modder. You can use A_JumpIfInventory in weapons, CheckInventory in ACS etc. There are a few more actors you can create that the system will recognize if needed, but the top level **Trait_(TRAIT NAME HERE)** actor MUST exist.
 
 ### Active Trait
 
@@ -88,4 +88,4 @@ TRAIT_ALPHA_ICON = "T_DUMM1";
 
 ## ACS
 
-Your traits need to also be registered via an ACS open script, but this is covered in Classes.md as you can register your class at the same time.
+Your traits need to also be registered via an ACS open script, but this is covered in [Classes.md](Classes.md) as you can register your class at the same time.
