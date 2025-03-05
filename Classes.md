@@ -17,33 +17,43 @@ You will need at least one ACS script loaded via **LOADACS** that imports **TRAI
 You need an OPEN script that registers your class and the traits it will get. You can use the functions **RegisterClass** and **RegisterTrait** that we import from TraitsDB to do this. 
 
 - **RegisterClass(str playeractor, int team)** - The player actor name is the actor of the playerclass. Team is which team they belong to (0 humans, 1 ghouls).
-- **RegisterTrait(str playeractor, str traitactor, str unused)** - The player actor name is the actor of the playerclass. Traitactor is the trait inventory item (see Traits.md). The last argument is currently unused.
+- **RegisterTrait(str playeractor, str traitactor, str unused)** - The player actor name is the actor of the playerclass. Traitactor is the trait inventory item (see [Traits.md](Traits.md)). The last argument is currently unused.
 
-Here is an example of an OPEN script that registers a class:
+You will also need a copy of this script to execute for the clients using an OPEN CLIENTSIDE script. Here is an example the scripts that registers a class:
 
 ```
 script "MyRegisterScript" OPEN
 {
-// Safety delay. Ensures the base classes have the correct order.
-Delay(1);
+  // Safety delay. Ensures the base classes have the correct order.
+  Delay(1);
+  
+  // Register the class and what team they represent.
+  // 0 = Huamns, 1 = Ghouls
+  RegisterClass("DummyPlayer", 0);
+  
+  // Now register the traits.
+  // The second argument is the trait inventory item. The third is currently unused, so leave it as an empty string.
+  RegisterTrait("DummyPlayer", "Trait_Alpha", "");
+  RegisterTrait("DummyPlayer", "Trait_Beta", "");
+  RegisterTrait("DummyPlayer", "Trait_Gamma", "");
+  RegisterTrait("DummyPlayer", "Trait_Delta", "");
+  RegisterTrait("DummyPlayer", "Trait_Epsilon", "");
+  RegisterTrait("DummyPlayer", "Trait_Zeta", "");
+  RegisterTrait("DummyPlayer", "Trait_Eta", "");
+  RegisterTrait("DummyPlayer", "Trait_Theta", "");
+  RegisterTrait("DummyPlayer", "Trait_Iota", "");
+  RegisterTrait("DummyPlayer", "Trait_Kappa", "");
+  RegisterTrait("DummyPlayer", "Trait_Lambda", "");
+}
 
-// Register the class and what team they represent.
-// 0 = Huamns, 1 = Ghouls
-RegisterClass("DummyPlayer", 0);
+// This script also needs to be run for the client!
 
-// Now register the traits.
-// The second argument is the trait inventory item. The third is currently unused, so leave it as an empty string.
-RegisterTrait("DummyPlayer", "Trait_Alpha", "");
-RegisterTrait("DummyPlayer", "Trait_Beta", "");
-RegisterTrait("DummyPlayer", "Trait_Gamma", "");
-RegisterTrait("DummyPlayer", "Trait_Delta", "");
-RegisterTrait("DummyPlayer", "Trait_Epsilon", "");
-RegisterTrait("DummyPlayer", "Trait_Zeta", "");
-RegisterTrait("DummyPlayer", "Trait_Eta", "");
-RegisterTrait("DummyPlayer", "Trait_Theta", "");
-RegisterTrait("DummyPlayer", "Trait_Iota", "");
-RegisterTrait("DummyPlayer", "Trait_Kappa", "");
-RegisterTrait("DummyPlayer", "Trait_Lambda", "");
+script "MyRegisterScript_Client" OPEN CLIENTSIDE
+{
+  if(IsNetworkGame())
+  {
+  ACS_NamedExecuteWithResult("MyRegisterScript");
+  }
 }
 ```
 
@@ -70,31 +80,31 @@ Here is a full example of script.
 ```
 script "GVH_LoadHud_DummyPlayer" (int tid)
 {
-// Slot 1 weapon setup.
-SetUserCvarString(ConsolePlayerNumber(), "gvh_hud_wep_1", "DummyChaingun");
-
-// Regular Fire
-SetUserCvarString(ConsolePlayerNumber(), "gvh_hud_wepicon_1", "DUMWEPI");
-SetUserCvarString(ConsolePlayerNumber(), "gvh_hud_wepammotype_1", "DummyClip");
-
-// Altfire
-SetUserCvarString(ConsolePlayerNumber(), "gvh_hud_wepalticon_1", "DUMWEPA");
-SetUserCvarString(ConsolePlayerNumber(), "gvh_hud_wepaltammotype_1", "DummyRocket");
-
-// Inventory use item, and what to display as the counter for it.
-SetUserCvarString(ConsolePlayerNumber(), "gvh_hud_useitem", "");
-SetUserCvarString(ConsolePlayerNumber(), "gvh_hud_itemcounter", "");
-
-// By default, weapon slots on the hud (the icons next to 1, 2, 3 etc)
-// Will use the wepicon defined above. You can override them here if needed.
-// For example, the Creeper's ventriloquism trait uses this to show what
-// sounds you will make for each weapon slot.
-SetUserCvarString(ConsolePlayerNumber(), "gvh_hud_sloticon_1", "CWEAP11");
-
-
-// You can use conditional statements to check for inventory (traits)
-// to modify the hud for different traits.
-// For more examples see HUDREG.acs in the base GVHRE pk3.
+  // Slot 1 weapon setup.
+  SetUserCvarString(ConsolePlayerNumber(), "gvh_hud_wep_1", "DummyChaingun");
+  
+  // Regular Fire
+  SetUserCvarString(ConsolePlayerNumber(), "gvh_hud_wepicon_1", "DUMWEPI");
+  SetUserCvarString(ConsolePlayerNumber(), "gvh_hud_wepammotype_1", "DummyClip");
+  
+  // Altfire
+  SetUserCvarString(ConsolePlayerNumber(), "gvh_hud_wepalticon_1", "DUMWEPA");
+  SetUserCvarString(ConsolePlayerNumber(), "gvh_hud_wepaltammotype_1", "DummyRocket");
+  
+  // Inventory use item, and what to display as the counter for it.
+  SetUserCvarString(ConsolePlayerNumber(), "gvh_hud_useitem", "");
+  SetUserCvarString(ConsolePlayerNumber(), "gvh_hud_itemcounter", "");
+  
+  // By default, weapon slots on the hud (the icons next to 1, 2, 3 etc)
+  // Will use the wepicon defined above. You can override them here if needed.
+  // For example, the Creeper's ventriloquism trait uses this to show what
+  // sounds you will make for each weapon slot.
+  SetUserCvarString(ConsolePlayerNumber(), "gvh_hud_sloticon_1", "CWEAP11");
+  
+  
+  // You can use conditional statements to check for inventory (traits)
+  // to modify the hud for different traits.
+  // For more examples see HUDREG.acs in the base GVHRE pk3.
 }
 ```
 ## LANGUAGE
@@ -122,6 +132,6 @@ There are more items to add to the LANGUAGE lump, but that will be covered in th
 
 Assuming you've set everything up correctly, your class is ready to be inserted into the game.
 
-If you run the game and find that in TLMS the class selector isn't showing at all anymore, it is because you have not defined any traits for it yet. In the current version of GVH:RE, it will only offer traits if at least 2 are available for **every** class. If you defined one with no traits, there won't be any traits to offer anyone!
+If you run the game and find that in TLMS the class selector isn't showing at all anymore, it is because you have not defined any traits for it yet. In the current version of GVH:RE, it will only offer traits if at least 2 are available for **every** class each round. If you defined one with no traits, there won't be any traits to offer anyone!
 
-Check the Traits.md page to learn how to create traits for your class.
+Check the [Traits.md](Traits.md) page to learn how to create traits for your class.
