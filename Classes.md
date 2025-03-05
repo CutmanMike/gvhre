@@ -14,7 +14,12 @@ You will need at least one ACS script loaded via **LOADACS** that imports **TRAI
 
 ### Registering your class
 
-You need an OPEN script that registers your class and the traits it will get. You can use the functions **RegisterClass** and **RegisterTrait** that we import from TraitsDB to do this. Here is an example of an OPEN script that registers a class:
+You need an OPEN script that registers your class and the traits it will get. You can use the functions **RegisterClass** and **RegisterTrait** that we import from TraitsDB to do this. 
+
+- **RegisterClass(str playeractor, int team)** - The player actor name is the actor of the playerclass. Team is which team they belong to (0 humans, 1 ghouls).
+- **RegisterTrait(str playeractor, str traitactor, str unused)** - The player actor name is the actor of the playerclass. Traitactor is the trait inventory item (see Traits.md). The last argument is currently unused.
+
+Here is an example of an OPEN script that registers a class:
 
 ```
 script "MyRegisterScript" OPEN
@@ -27,7 +32,7 @@ Delay(1);
 RegisterClass("DummyPlayer", 0);
 
 // Now register the traits.
-//The second argument is the trait inventory item. The third is currently unused, so leave it as an empty string.
+// The second argument is the trait inventory item. The third is currently unused, so leave it as an empty string.
 RegisterTrait("DummyPlayer", "Trait_Alpha", "");
 RegisterTrait("DummyPlayer", "Trait_Beta", "");
 RegisterTrait("DummyPlayer", "Trait_Gamma", "");
@@ -48,17 +53,17 @@ In ACS again, you will need to define what GVH:RE will display on the HUD. You m
 
 Your HUD script MUST be an named script, and must use the pattern "GVH_LoadHud_(CLASSNAME HERE)" and take one argument. The rest of the script will be setting user cvars to maniuplate the HUD. The following CVARs must be set using SetUserCvarString, affecting the ```ConsolePlayerNumber()```.
 
-**gvh_hud_wep_1** - The weapon actor used for slot 1.
-**gvh_hud_wepicon_1** - The graphic displayed for the weapon in slot 1's primary fire.
-**gvh_hud_wepammotype_1** - The ammo actor used for the weapon in slot 1's primary fire.
-**gvh_hud_wepalticon_1** - The graphic displayed for the weapon in slot 1's alt fire.
-**gvh_hud_wepaltammotype_1** - The ammo actor used for the weapon in slot 1's alt fire.
-**gvh_hud_sloticon_1** - The graphic displayed for the weapon in slot 1 in the weapon slot list. If blank, will use the same as gvh_hud_wepicon_1.
+- **gvh_hud_wep_1** - The weapon actor used for slot 1.
+- **gvh_hud_wepicon_1** - The graphic displayed for the weapon in slot 1's primary fire.
+- **gvh_hud_wepammotype_1** - The ammo actor used for the weapon in slot 1's primary fire.
+- **gvh_hud_wepalticon_1** - The graphic displayed for the weapon in slot 1's alt fire.
+- **gvh_hud_wepaltammotype_1** - The ammo actor used for the weapon in slot 1's alt fire.
+- **gvh_hud_sloticon_1** - The graphic displayed for the weapon in slot 1 in the weapon slot list. If blank, will use the same as gvh_hud_wepicon_1.
 
 You can change the number for the above to affect different weapon slots.
 
-**gvh_hud_useitem** - The grahpic displayed for the inventory (use item) actor.
-**gvh_hud_itemcounter** - The actor for the inventory (use item) actor's counter. Leave blank to imply infinite use.
+- **gvh_hud_useitem** - The grahpic displayed for the inventory (use item) actor.
+- **gvh_hud_itemcounter** - The actor for the inventory (use item) actor's counter. Leave blank to imply infinite use.
 
 Here is a full example of script.
 
@@ -96,9 +101,9 @@ SetUserCvarString(ConsolePlayerNumber(), "gvh_hud_sloticon_1", "CWEAP11");
 
 There are a few entries you will need to provide in a **LANGUAGE** lump.
 
-**CLASS_NAME_(CLASS NAME HERE)** - The name of your class.
-**CLASS_SELECT_(CLASS NAME HERE)** - The graphic of your actor displayed on the class selector while it is selected.
-**CLASS_UNSELECT_(CLASS NAME HERE)** - The graphic of your actor displayed on the class selector while it is not selected.
+- **CLASS_NAME_(CLASS NAME HERE)** - The name of your class.
+- **CLASS_SELECT_(CLASS NAME HERE)** - The graphic of your actor displayed on the class selector while it is selected.
+- **CLASS_UNSELECT_(CLASS NAME HERE)** - The graphic of your actor displayed on the class selector while it is not selected.
 
 Here is an example of a LANGUAGE lump:
 
