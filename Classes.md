@@ -128,6 +128,22 @@ CLASS_UNSELECT_DUMMYPLAYER = "SELUDUM";
 
 There are more items to add to the LANGUAGE lump, but that will be covered in the traits guide!
 
+## DECORATE
+
+You will need to crate an automap marker for your class. It should be a GVH_MapMarker class that stops after 2 tics. You can copy the example below to easily create one for your class. The sprite should be a representation of your class to appear on the automap.
+
+```
+actor MapMarker_DummyPlayer : GVH_MapMarker
+{
+  states
+  {
+  Spawn:
+  DUMM A 2
+  stop
+  }
+}
+```
+
 ## Next steps
 
 Assuming you've set everything up correctly, your class is ready to be inserted into the game.
