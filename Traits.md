@@ -92,7 +92,9 @@ Your traits need to also be registered via an ACS open script, but this is cover
 
 ## Testing
 
-To test your traits, hop into an offline skirmish or singleplayer level with your class and type **GVHD** on the console. This will open up the trait debug menu. From there you can see how your traits will appear in the trait selector, and also select them for testing! (Note: **sv_cheats** must be true to use this menu).
+To test your traits, hop into an offline skirmish or singleplayer level with your class and type **GVHD** on the console. This will open up the trait debug menu. From there you can see how your traits will appear in the trait selector, and also select them for testing!
+
+(Note: **sv_cheats** must be true to use this menu)
 
 ## Next Steps
 
