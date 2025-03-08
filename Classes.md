@@ -31,8 +31,8 @@ script "MyRegisterScript" OPEN
   // GVHADD_HUMAN_TEAM = Huamns, GVHADD_GHOUL_TEAM = Ghouls
   RegisterClass("DummyPlayer", GVHADD_HUMAN_TEAM);
   
-  // Now register the traits.
-  //The second argument is the trait inventory item. The third is currently unused, so leave it as an empty string.
+  // Now to register the traits with the RegisterTrait function.
+  // The first argument is the player class you are assigning the trait to. The second argument is the trait inventory item.
   
   RegisterTrait("DummyPlayer", "Trait_Alpha");
   RegisterTrait("DummyPlayer", "Trait_Beta");
@@ -82,25 +82,25 @@ Here is a full example of script.
 script "GVH_LoadHud_DummyPlayer" (int tid)
 {
   // Slot 1 weapon setup.
-  SetUserCvarString(ConsolePlayerNumber(), "gvh_hud_wep_1", "DummyChaingun");
+  UpdateHud("gvh_hud_wep_1", "DummyChaingun");
   
   // Regular Fire
-  SetUserCvarString(ConsolePlayerNumber(), "gvh_hud_wepicon_1", "DUMWEPI");
-  SetUserCvarString(ConsolePlayerNumber(), "gvh_hud_wepammotype_1", "DummyClip");
+  UpdateHud("gvh_hud_wepicon_1", "DUMWEPI");
+  UpdateHud("gvh_hud_wepammotype_1", "DummyClip");
   
   // Altfire
-  SetUserCvarString(ConsolePlayerNumber(), "gvh_hud_wepalticon_1", "DUMWEPA");
-  SetUserCvarString(ConsolePlayerNumber(), "gvh_hud_wepaltammotype_1", "DummyRocket");
+  UpdateHud("gvh_hud_wepalticon_1", "DUMWEPA");
+  UpdateHud("gvh_hud_wepaltammotype_1", "DummyRocket");
   
   // Inventory use item, and what to display as the counter for it.
-  SetUserCvarString(ConsolePlayerNumber(), "gvh_hud_useitem", "");
-  SetUserCvarString(ConsolePlayerNumber(), "gvh_hud_itemcounter", "");
+  UpdateHud("gvh_hud_useitem", "");
+  UpdateHud("gvh_hud_itemcounter", "");
   
   // By default, weapon slots on the hud (the icons next to 1, 2, 3 etc)
   // Will use the wepicon defined above. You can override them here if needed.
   // For example, the Creeper's ventriloquism trait uses this to show what
   // sounds you will make for each weapon slot.
-  SetUserCvarString(ConsolePlayerNumber(), "gvh_hud_sloticon_1", "CWEAP11");
+  UpdateHud("gvh_hud_sloticon_1", "DUMWEPA");
   
   
   // You can use conditional statements to check for inventory (traits)
