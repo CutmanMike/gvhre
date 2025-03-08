@@ -90,6 +90,10 @@ TRAIT_ALPHA_ICON = "T_DUMM1";
 
 Your traits need to also be registered via an ACS open script, but this is covered in [Classes.md](Classes.md) as you can register your class at the same time.
 
+## Testing
+
+To test your traits, hop into an offline skirmish or singleplayer level with your class and type **GVHD** on the console. This will open up the trait debug menu. From there you can see how your traits will appear in the trait selector, and also select them for testing! (Note: **sv_cheats** must be true to use this menu).
+
 ## Next Steps
 
 Now that you've got a trait inventory item ready, it's time to decide how your class should use this trait. You can do something basic such as doing an A_JumpIfInventory to check if a player owns Trait_(TRAIT NAME HERE) to perform an alternative action, or use a TriggeredTrait to execute an ACS script that does all the work.
