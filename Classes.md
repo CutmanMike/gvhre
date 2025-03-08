@@ -60,9 +60,9 @@ script "MyRegisterScript_Client" OPEN CLIENTSIDE
 
 ### Setting up the HUD
 
-In ACS again, you will need to define what GVH:RE will display on the HUD. You may notice the absense of SBARINFO in this mod. This is because the entire HUD is handled via ACS and user cvars. You can use another acs file if you wish, as long as it #includes **GVHADD.acs** again.
+In ACS again, you will need to define what GVH:RE will display on the HUD. You may notice the absense of SBARINFO in this mod. This is because the entire HUD is handled via ACS and user cvars. You can use another acs file if you wish, as long as it #includes **GVHADD.acs** again. This time we will be using GVHADD's **UpdateHUD** function to maniuplate the HUD.
 
-Your HUD script MUST be an named script, and must use the pattern "GVH_LoadHud_(CLASSNAME HERE)" and take one argument. The rest of the script will be setting user cvars to maniuplate the HUD using the function **UpdateHud**. **UpdateHud** takes a string element to choose which element of the HUD to manipulate, and a string for what to put in that element. The HUD elements are listed below:
+Your HUD script MUST be an named script, and must use the pattern "GVH_LoadHud_(CLASSNAME HERE)" and take one argument. **UpdateHud** takes a string element to choose which element of the HUD to manipulate, and a string for what to put in that element. The HUD elements are listed below:
 
 - **gvh_hud_wep_1** - The weapon actor used for slot 1.
 - **gvh_hud_wepicon_1** - The graphic displayed for the weapon in slot 1's primary fire.
