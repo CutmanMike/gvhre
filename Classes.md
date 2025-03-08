@@ -14,7 +14,7 @@ You will need at least one ACS script loaded via **LOADACS**. That script needs 
 
 ### Registering your class
 
-You need an OPEN script that registers your class and the traits it will get. You can use the functions **RegisterClass** and **RegisterTrait** that we import from TraitsDB to do this. 
+You need an OPEN script that registers your class and the traits it will get. You can use the functions **RegisterClass** and **RegisterTrait** that we get access to by including **GVHADD.acs** to do this. 
 
 - **RegisterClass(str playeractor, int team)** - The player actor name is the actor of the playerclass. Team is which team they belong to, which should be either GVHADD_HUMAN_TEAM or GVHADD_GHOUL_TEAM.
 - **RegisterTrait(str playeractor, str traitactor)** - The player actor name is the actor of the playerclass. Traitactor is the trait inventory item (see [Traits.md](Traits.md)).
