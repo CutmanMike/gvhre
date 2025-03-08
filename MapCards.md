@@ -33,3 +33,12 @@ MAPCARD_BACKGROUND_GVH30 = "RW23_1";
 MAPCARD_BACKGROUNDHEIGHT_GVH30 = "128";
 MAPCARD_FRAME_GVH30 = "MAPCRB07";
 ```
+
+## Fonts
+
+GVH:RE has the following fonts to use for map cards, though you can always import your own:
+
+- **BIGFONT** - Standard Doom2 big font, used by default.
+- **GRGW_LWR** - Gargoyle Wing. The font used for many GVH:RE elements.
+- **GRGW_BO** - Same as above but with a black border.
+- **ZBIGFONT** - ZDoom logo font.
