@@ -4,20 +4,20 @@ Creating classes for GVH:RE is straight forward, assuming you already know how t
 
 ## ACS
 
-You will need at least one ACS script loaded via **LOADACS** that imports **TRAITSDB**. If you're doing this in slade, copy **TRAITSDB.acs** from the GVH:RE pk3 file into the same directory you will have your other .acs files. You do not need to compile this file, it just needs to be available for your script compiler. Once you've set that up, create your new acs text file. It should have the following at the top:
+You will need at least one ACS script loaded via **LOADACS**. That script needs to #include **GVHADD** to access the trait and class registering functions. If you're doing this in slade, copy **GVHADD.acs** from the GVH:RE pk3 file into the same directory you will have your other .acs files. You *do not* need to compile this file, it just needs to be available for your script compiler. Once you've set that up, create your new acs text file. It should have the following at the top:
 
 ```
 #library "MYCLASS"
 #include "zcommon.acs"
-#import "TraitsDB.acs"
+#include "GVHADD.acs"
 ```
 
 ### Registering your class
 
 You need an OPEN script that registers your class and the traits it will get. You can use the functions **RegisterClass** and **RegisterTrait** that we import from TraitsDB to do this. 
 
-- **RegisterClass(str playeractor, int team)** - The player actor name is the actor of the playerclass. Team is which team they belong to (0 humans, 1 ghouls).
-- **RegisterTrait(str playeractor, str traitactor, str unused)** - The player actor name is the actor of the playerclass. Traitactor is the trait inventory item (see [Traits.md](Traits.md)). The last argument is currently unused.
+- **RegisterClass(str playeractor, int team)** - The player actor name is the actor of the playerclass. Team is which team they belong to, which should be either GVHADD_HUMAN_TEAM or GVHADD_GHOUL_TEAM.
+- **RegisterTrait(str playeractor, str traitactor)** - The player actor name is the actor of the playerclass. Traitactor is the trait inventory item (see [Traits.md](Traits.md)).
 
 You will also need a copy of this script to execute for the clients using an OPEN CLIENTSIDE script. Here is an example the scripts that registers a class:
 
@@ -28,40 +28,41 @@ script "MyRegisterScript" OPEN
   Delay(1);
   
   // Register the class and what team they represent.
-  // 0 = Huamns, 1 = Ghouls
-  RegisterClass("DummyPlayer", 0);
+  // GVHADD_HUMAN_TEAM = Huamns, GVHADD_GHOUL_TEAM = Ghouls
+  RegisterClass("DummyPlayer", GVHADD_HUMAN_TEAM);
   
   // Now register the traits.
-  // The second argument is the trait inventory item. The third is currently unused, so leave it as an empty string.
-  RegisterTrait("DummyPlayer", "Trait_Alpha", "");
-  RegisterTrait("DummyPlayer", "Trait_Beta", "");
-  RegisterTrait("DummyPlayer", "Trait_Gamma", "");
-  RegisterTrait("DummyPlayer", "Trait_Delta", "");
-  RegisterTrait("DummyPlayer", "Trait_Epsilon", "");
-  RegisterTrait("DummyPlayer", "Trait_Zeta", "");
-  RegisterTrait("DummyPlayer", "Trait_Eta", "");
-  RegisterTrait("DummyPlayer", "Trait_Theta", "");
-  RegisterTrait("DummyPlayer", "Trait_Iota", "");
-  RegisterTrait("DummyPlayer", "Trait_Kappa", "");
-  RegisterTrait("DummyPlayer", "Trait_Lambda", "");
+  //The second argument is the trait inventory item. The third is currently unused, so leave it as an empty string.
+  
+  RegisterTrait("DummyPlayer", "Trait_Alpha");
+  RegisterTrait("DummyPlayer", "Trait_Beta");
+  RegisterTrait("DummyPlayer", "Trait_Gamma");
+  RegisterTrait("DummyPlayer", "Trait_Delta");
+  RegisterTrait("DummyPlayer", "Trait_Epsilon");
+  RegisterTrait("DummyPlayer", "Trait_Zeta");
+  RegisterTrait("DummyPlayer", "Trait_Eta");
+  RegisterTrait("DummyPlayer", "Trait_Theta");
+  RegisterTrait("DummyPlayer", "Trait_Iota");
+  RegisterTrait("DummyPlayer", "Trait_Kappa");
+  RegisterTrait("DummyPlayer", "Trait_Lambda");
 }
 
-// This script also needs to be run for the client!
+// IMPORTANT! This script also needs to be run for the client!
 
 script "MyRegisterScript_Client" OPEN CLIENTSIDE
 {
-  if(IsNetworkGame())
-  {
-  ACS_NamedExecuteWithResult("MyRegisterScript");
-  }
+    if(IsNetworkGame())
+    {
+        ACS_NamedExecuteWithResult("MyRegisterScript");
+    }
 }
 ```
 
 ### Setting up the HUD
 
-In ACS again, you will need to define what GVH:RE will display on the HUD. You may notice the absense of SBARINFO in this mod. This is because the entire HUD is handled via ACS and user cvars.
+In ACS again, you will need to define what GVH:RE will display on the HUD. You may notice the absense of SBARINFO in this mod. This is because the entire HUD is handled via ACS and user cvars. You can use another acs file if you wish, as long as it #includes **GVHADD.acs** again.
 
-Your HUD script MUST be an named script, and must use the pattern "GVH_LoadHud_(CLASSNAME HERE)" and take one argument. The rest of the script will be setting user cvars to maniuplate the HUD. The following CVARs must be set using SetUserCvarString, affecting the ```ConsolePlayerNumber()```.
+Your HUD script MUST be an named script, and must use the pattern "GVH_LoadHud_(CLASSNAME HERE)" and take one argument. The rest of the script will be setting user cvars to maniuplate the HUD using the function **UpdateHud**. **UpdateHud** takes a string element to choose which element of the HUD to manipulate, and a string for what to put in that element. The HUD elements are listed below:
 
 - **gvh_hud_wep_1** - The weapon actor used for slot 1.
 - **gvh_hud_wepicon_1** - The graphic displayed for the weapon in slot 1's primary fire.
