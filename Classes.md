@@ -4,7 +4,7 @@ Creating classes for GVH:RE is straight forward, assuming you already know how t
 
 ## ACS
 
-You will need at least one ACS script loaded via **LOADACS**. That script needs to #include **GVHADD** to access the trait and class registering functions. If you're doing this in slade, copy **GVHADD.acs** from the GVH:RE pk3 file into the same directory you will have your other .acs files. You *do not* need to compile this file, it just needs to be available for your script compiler. Once you've set that up, create your new acs text file. It should have the following at the top:
+You will need at least one ACS script loaded via **LOADACS**. That script needs to #include **GVHADD.acs** to access the trait and class registering functions. If you're doing this in slade, copy **GVHADD.acs** from the GVH:RE pk3 file into the same directory you will have your other .acs files. You *do not* need to compile this file, it just needs to be available for your script compiler. Once you've set that up, create your new acs text file. It should have the following at the top:
 
 ```
 #library "MYCLASS"
