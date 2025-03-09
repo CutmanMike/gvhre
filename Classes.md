@@ -1,5 +1,7 @@
 # Creating Classes
 
+In GVH:RE classes can be inserted into the game without the need of recompiling the core GVH:RE pk3 or stitching together a new **SBARINFO** whenever you want to create your own set of classes. Once you've made a class, just add it on as you would add on a map pack and GVH:RE will dynamically add it to the game with no extra fuss.
+
 Creating classes for GVH:RE is straight forward, assuming you already know how to create and add a playerclass already. There are a few additional steps to set up your class so it is available in the class selector, and to have traits available for it.
 
 ## ACS
