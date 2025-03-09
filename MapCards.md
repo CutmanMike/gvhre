@@ -4,7 +4,7 @@ Map cards are little information cards that appear at the start of a level, show
 
 ## LANGUAGE
 
-All you need to do to set up a map card is add a few entries to a **LANGUAGE** lump. The game will hand the rest. Replace MAPNAME with the map code of your map (i.e MAP01).
+All you need to do to set up a map card is add a few entries to a **LANGUAGE** lump. The game will handle the rest. Replace MAPNAME with the map code of your map (i.e MAP01).
 
 - **MAPCARD_NAME_MAPNAME** - The actual name of your map, i.e "Claw Fist".
 - **MAPCARD_SUBTEXT_MAPNAME** - Smaller text that appears under the name of your map, can be anything.
