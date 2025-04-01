@@ -20,4 +20,5 @@ For more information on creating content, see [ZDoom Wiki](https://zdoom.org/wik
 
 * [Creating Classes](Classes.md)
 * [Creating Traits](Traits.md)
+* [Example Player Class](ExampleClass.md)
 * [Creating Map Cards](MapCards.md)
