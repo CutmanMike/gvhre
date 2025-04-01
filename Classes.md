@@ -117,6 +117,10 @@ There are a few entries you will need to provide in a **LANGUAGE** lump.
 - **CLASS_NAME_(CLASS NAME HERE)** - The name of your class.
 - **CLASS_SELECT_(CLASS NAME HERE)** - The graphic of your actor displayed on the class selector while it is selected.
 - **CLASS_UNSELECT_(CLASS NAME HERE)** - The graphic of your actor displayed on the class selector while it is not selected.
+- **CLASS_LORE_(CLASS NAME HERE)** - The story text for your class. It is viewable in the GVHHUB map.
+- **CLASS_ABILITY_(CLASS NAME HERE)** - The list of abilities and what your class does. It is viewable in the GVHHUB map.
+- **CLASS_PORTRAIT_(CLASS NAME HERE)** - The portrait image of your class.  It is viewable in the GVHHUB map.
+- **CLASS_PORTRAITSCALE_(CLASS NAME HERE)** - The image scaling of your portrait image. If unspecified, is 1.0.
 
 Here is an example of a LANGUAGE lump:
 
@@ -127,6 +131,11 @@ CLASS_NAME_DUMMYPLAYER = "DUMMY";
 
 CLASS_SELECT_DUMMYPLAYER = "SELIDUM";
 CLASS_UNSELECT_DUMMYPLAYER = "SELUDUM";
+CLASS_PORTRAIT_DUMMYPLAYER = "PORTDUMM";
+CLASS_PORTRAITSCALE_DUMMYPLAYER = "1.0";
+
+CLASS_LORE_DUMMYPLAYER = "Once upon a time there was a Dummy Player.";
+CLASS_ABILITY_DUMMYPLAYER = "\cfHealth:\c- 100\n\n\cfDummy Chaingun\c- (Fire)\n\nThe Dummy fires his mighty Chaingun.\n\n\cfShotgun\c- (Altfire)\n\nThe The Dummy player fires a rocket.";
 ```
 
 There are more items to add to the LANGUAGE lump, but that will be covered in the traits guide!
