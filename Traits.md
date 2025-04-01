@@ -74,16 +74,18 @@ actor Trait_MyCoolTrait_X : TraitRemoval
 
 There are a few strings you will need to add to a **LANGUAGE** lump to finalize your trait setup.
 
-- **TRAIT_(TRAIT NAME HERE)_NAME** - The name of your trait. It doesn't need to match the class name exactly.
+- **TRAIT_(TRAIT NAME HERE)_NAME** - The nice name of your trait. It doesn't need to match the class name exactly.
 - **TRAIT_(TRAIT NAME HERE)_DESC** - The description of what your trait does.
+- **TRAIT_(TRAIT NAME HERE)_USAGE** - The text on how to use the trait. This appears under your trait description i.e "Passive", "Use Item" etc.
 - **TRAIT_(TRAIT NAME HERE)_ICON** - The graphic to use for your trait icon.
 
 Try to keep your trait description within 6 lines to make it fit nicely in the trait selector box! Here's an example LANGUAGE lump:
 
 ```
 TRAIT_ALPHA_NAME = "Alpha Strike";
-TRAIT_ALPHA_DESC = "This is the description for\n\nthe first trait.\n\n\cv- Something -";
+TRAIT_ALPHA_DESC = "This is the description for the first trait.";
 TRAIT_ALPHA_ICON = "T_DUMM1";
+TRAIT_ALPHA_USAGE = "Passive";
 ```
 
 ## ACS
